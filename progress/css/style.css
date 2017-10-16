@@ -1,0 +1,35 @@
+*{
+	text-align: center;
+}
+
+body{
+	
+	background-color: #fbe9e7;
+}
+
+.mainhd{
+	text-align: center;
+	background-color: #18ffff;
+	color: white;
+	font-size: 50px;
+	padding: 6px;
+}
+
+.box1, .box2, .box3 {
+	border: 2px solid #e0e0e0;
+	margin: 10px;
+	margin-left: 65px;
+	color: #616161 ;	
+}
+
+.box1{
+	background-color: #ff8a80;
+}
+
+.box2{
+	background-color: #fff176;
+}
+
+.box3{
+	background-color: #b2ff59;
+}
