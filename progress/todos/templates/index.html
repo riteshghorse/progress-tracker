@@ -73,7 +73,7 @@
             <div class="col-lg-3 box1">
                 <h5>To Do</h5>
                 <ul class="w3-ul">
-                    <li ng-repeat="x in todo" class="w3-padding-16">{{x}}<span ng-click="removeTodo($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
+                    <li ng-repeat="x in todo" class="w3-padding-16"><span ng-bind="x"></span><span ng-click="removeTodo($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
                 </ul>
                 <input placeholder="New to do" ng-model="addtodo" class="w3-input w3-border w3-padding">
                 <button ng-click="addTodo()" class="w3-btn w3-padding w3-green">Add</button>
@@ -82,7 +82,7 @@
             <div class="col-lg-3 box2">
                 <h5> In Progress </h5>
                 <ul class="w3-ul">
-                    <li ng-repeat="x in inprogress" class="w3-padding-16">{{x}}<span ng-click="removeInprogress($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
+                    <li ng-repeat="x in inprogress" class="w3-padding-16"><span ng-bind="x"></span><span ng-click="removeInprogress($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
                 </ul>
                 <input placeholder="New progress" ng-model="addinp" class="w3-input w3-border w3-padding">
                 <button ng-click="addInprogress()" class="w3-btn w3-padding w3-green">Add</button>
@@ -91,7 +91,7 @@
             <div class="col-lg-3 box3">
                 <h5> Done </h5>
                 <ul class="w3-ul">
-                    <li ng-repeat="x in done" class="w3-padding-16">{{x}}<span ng-click="removeDone($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
+                    <li ng-repeat="x in done" class="w3-padding-16"><span ng-bind="x"></span><span ng-click="removeDone($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
                 </ul>
                 <input placeholder="New tasks done" ng-model="adddone" class="w3-input w3-border w3-padding">
                 <button ng-click="addDone()" class="w3-btn w3-padding w3-green">Add</button>
