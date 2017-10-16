@@ -1,0 +1,104 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Progress Tracker</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+    <script>
+    var app = angular.module("progressTracker", []);
+    app.controller("myCtrl", function($scope) {
+        $scope.todo = [];
+        $scope.inprogress = [];
+        $scope.done = [];
+        $scope.addTodo = function() {
+            $scope.errortodo = "";
+            if (!$scope.addtodo) { return; }
+            if ($scope.todo.indexOf($scope.addtodo) == -1) {
+                $scope.todo.push($scope.addtodo);
+            } else {
+                $scope.errortodo = "The item is already added!";
+            }
+        }
+        $scope.removeTodo = function(x) {
+            $scope.errortodo = "";
+            $scope.todo.splice(x, 1);
+        }
+        $scope.addInprogress = function() {
+            $scope.errorinp = "";
+            if (!$scope.addinp) { return; }
+            if ($scope.inprogress.indexOf($scope.addinp) == -1) {
+                $scope.inprogress.push($scope.addinp);
+            } else {
+                $scope.errorinp = "The item is already added!";
+            }
+        }
+        $scope.removeInprogress = function(x) {
+            $scope.errorinp = "";
+            $scope.inprogress.splice(x, 1);
+        }
+        $scope.addDone = function() {
+            $scope.errordone = "";
+            if (!$scope.adddone) { return; }
+            if ($scope.done.indexOf($scope.adddone) == -1) {
+                $scope.done.push($scope.adddone);
+            } else {
+                $scope.errordone = "The item is already added!";
+            }
+        }
+        $scope.removeDone = function(x) {
+            $scope.errordone = "";
+            $scope.done.splice(x, 1);
+        }
+    });
+    </script>
+    <div class="row">
+        <div class="col-xs-12">
+            <header class="mainhd"> Your own progress tracker </header>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" ng-app="progressTracker" ng-cloak ng-controller="myCtrl">
+            <div class="col-lg-3 box1">
+                <h5>To Do</h5>
+                <ul class="w3-ul">
+                    <li ng-repeat="x in todo" class="w3-padding-16">{{x}}<span ng-click="removeTodo($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
+                </ul>
+                <input placeholder="New to do" ng-model="addtodo" class="w3-input w3-border w3-padding">
+                <button ng-click="addTodo()" class="w3-btn w3-padding w3-green">Add</button>
+                <p class="w3-text-red">{{errortodo}}</p>
+            </div>
+            <div class="col-lg-3 box2">
+                <h5> In Progress </h5>
+                <ul class="w3-ul">
+                    <li ng-repeat="x in inprogress" class="w3-padding-16">{{x}}<span ng-click="removeInprogress($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
+                </ul>
+                <input placeholder="New progress" ng-model="addinp" class="w3-input w3-border w3-padding">
+                <button ng-click="addInprogress()" class="w3-btn w3-padding w3-green">Add</button>
+                <p class="w3-text-red">{{errorinp}}</p>
+            </div>
+            <div class="col-lg-3 box3">
+                <h5> Done </h5>
+                <ul class="w3-ul">
+                    <li ng-repeat="x in done" class="w3-padding-16">{{x}}<span ng-click="removeDone($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
+                </ul>
+                <input placeholder="New tasks done" ng-model="adddone" class="w3-input w3-border w3-padding">
+                <button ng-click="addDone()" class="w3-btn w3-padding w3-green">Add</button>
+                <p class="w3-text-red">{{errordone}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
