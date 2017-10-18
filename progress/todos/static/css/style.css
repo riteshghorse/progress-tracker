@@ -33,3 +33,12 @@ body{
 .box3{
 	background-color: #b2ff59;
 }
+
+.footers{
+	position: relative;
+	margin-top: -150px;
+	height: 150px;
+	clear: both;
+	padding-top: 20px;
+	background-color: #18ffff;
+}

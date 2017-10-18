@@ -2,6 +2,8 @@ import json
 from django.shortcuts import render, redirect
 from django.db import connection
 from django.views.decorators.csrf import csrf_protect ,csrf_exempt
+from django.http import HttpResponse
+from django.db import connection
 
 
 def index(request):
@@ -11,9 +13,5 @@ def index(request):
 def newEntry(request):
 	data = request.body.decode('utf-8') 
 	received_json_data = json.loads(data)
-	print(received_json_data['info'])
-	# data = request.json['info1']
-	# print(data)
-	# item = data
-	# print(item)
-	return render(request, 'index.html', {})
+	item = received_json_data['info']
+	return render(request, 'abc.html', {"abc":your_list})
