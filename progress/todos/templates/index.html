@@ -18,7 +18,7 @@
 <body>
     <script>
     var app = angular.module("progressTracker", []);
-    app.controller("myCtrl", function($scope) {
+    app.controller("myCtrl", function($scope, $http) {
         $scope.todo = [];
         $scope.inprogress = [];
         $scope.done = [];
@@ -27,6 +27,19 @@
             if (!$scope.addtodo) { return; }
             if ($scope.todo.indexOf($scope.addtodo) == -1) {
                 $scope.todo.push($scope.addtodo);
+                $http({
+
+    method: 'POST',
+    url: 'newEntry',
+    headers: {'Content-Type': 'application/json'},
+    data: {
+        info: $scope.addtodo
+    }
+}).then(function(response){
+    alert("oye");
+}, function(error){
+    console.log("error");
+});
             } else {
                 $scope.errortodo = "The item is already added!";
             }
@@ -77,7 +90,7 @@
                 </ul>
                 <input placeholder="New to do" ng-model="addtodo" class="w3-input w3-border w3-padding">
                 <button ng-click="addTodo()" class="w3-btn w3-padding w3-green">Add</button>
-                <p class="w3-text-red">{{errortodo}}</p>
+                <p class="w3-text-red" ng-bind="errortodo"></p>
             </div>
             <div class="col-lg-3 box2">
                 <h5> In Progress </h5>
@@ -86,7 +99,7 @@
                 </ul>
                 <input placeholder="New progress" ng-model="addinp" class="w3-input w3-border w3-padding">
                 <button ng-click="addInprogress()" class="w3-btn w3-padding w3-green">Add</button>
-                <p class="w3-text-red">{{errorinp}}</p>
+                <p class="w3-text-red" ng-bind="errorinp"></p>
             </div>
             <div class="col-lg-3 box3">
                 <h5> Done </h5>
@@ -95,7 +108,7 @@
                 </ul>
                 <input placeholder="New tasks done" ng-model="adddone" class="w3-input w3-border w3-padding">
                 <button ng-click="addDone()" class="w3-btn w3-padding w3-green">Add</button>
-                <p class="w3-text-red">{{errordone}}</p>
+                <p class="w3-text-red" ng-bind="errordone"></p>
             </div>
         </div>
     </div>
